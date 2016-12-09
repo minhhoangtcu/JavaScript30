@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="myStyle.css">
 </head>
 <body>
 
@@ -59,25 +59,46 @@
 
 <script>
 
+  function playSound(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
 
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return; // stop the function from running all together
-    audio.currentTime = 0; // rewind to the start
+    if (!audio) return;
+
+    audio.currentTime = 0; // rewind the time to start
     audio.play();
-    key.classList.add('playing');
   }
+
+  function animateButton(keyCode) {
+    const button = document.querySelector(`.key[data-key="${keyCode}"]`);
+
+    if (!button) return;
+
+    button.classList.add('playing');
+  }
+
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return; // skip it if it's not a transform
+
+    if (e.propertyName != 'transform') return;
+
     this.classList.remove('playing');
   }
 
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
+  window.addEventListener('keydown', (e) => {
+
+    // Play sound
+    const keyCode = e.keyCode;
+    playSound(keyCode);
+
+    // Animate the button
+    animateButton(keyCode);
+
+  });
+
+  const allKeys = document.querySelectorAll('.key');
+  allKeys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 </script>
+
 
 </body>
 </html>
