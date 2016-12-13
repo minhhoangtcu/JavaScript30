@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cool Sliding Show</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="panels">
+
+    <div class="panel panel--1">
+      <p class="panel__first">A cup of</p>
+      <p>Dark</p>
+      <p class="panel__last">Coffee</p>
+    </div>
+
+    <div class="panel panel--2">
+      <p class="panel__first">A cup of</p>
+      <p>Milk</p>
+      <p class="panel__last">Coffee</p>
+    </div>
+
+    <div class="panel panel--3">
+      <p class="panel__first">A cup of</p>
+      <p>Creamy</p>
+      <p class="panel__last">Coffee</p>
+    </div>
+
+    <div class="panel panel--4">
+      <p class="panel__first">A cup of</p>
+      <p>Frap</p>
+      <p class="panel__last">Coffee</p>
+    </div>
+
+  </div>
+
+  <script>
+
+    const panels = document.querySelectorAll('.panel');
+
+    function toggleOpen() {
+      panels.forEach(panel => panel.classList.remove('open'));
+
+      this.classList.toggle('open');
+    }
+
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')) {
+          this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+  </script>
+
+</body>
+</html>
