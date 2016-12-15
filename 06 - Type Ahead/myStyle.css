@@ -1,0 +1,56 @@
+html {
+  font-family: 'helvetica neue';
+}
+
+/* Style the filter box */
+input {
+  box-sizing: border-box; /* So the width would also compute the border length */
+  width: 100%;
+  padding: 10px;
+  margin: 0px;
+}
+
+/* Style the text inside the filter box */
+input.search-filter-box {
+  font-size: 30px;
+  font-weight: lighter;
+  text-align: center;
+  color: grey;
+  border: 10px outset #efe6e6;
+  border-radius: 3px;
+}
+
+/* Style the whole suggestions section */
+.suggestions {
+  list-style: none;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Style each suggestion */
+.suggestions li {
+  padding: 15px;
+  box-shadow: 0px 1px 2px gray;
+
+  font-size: 14px;
+  text-transform: uppercase;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+span.population {
+  font-size: 12px;
+}
+
+.hl {
+  background:#ffc600;
+}
+
+.search-form {
+  max-width: 400px;
+  margin: 50px auto; /* center the search form */
+}
