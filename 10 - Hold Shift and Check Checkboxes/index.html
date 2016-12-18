@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkboxes</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+
+  <div class="todo">
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Banana</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Melon Melon Melon Melon Melon Melon Melon Melon Melon Melon</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Apple</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Lemon</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Bread</p>
+    </div>
+
+    <div class="item">
+      <input type="checkbox">
+      <p>Egg</p>
+    </div>
+
+  </div>
+
+  <script>
+    
+  const checkboxes = document.querySelectorAll('.todo input[type="checkbox"]');
+
+  let lastChecked;
+
+  function handleCheck(e) {
+
+    let inBetween = false;
+
+    if (e.shiftKey && this.checked) {
+
+      checkboxes.forEach(checkbox => {
+
+        // Toggle checking flag to true for all boxes between this and lastChecked
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }
+
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
+  </script>
+
+</body>
+</html>
